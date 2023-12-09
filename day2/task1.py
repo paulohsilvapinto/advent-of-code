@@ -1,11 +1,7 @@
 from commons.utils import read_input
 import re
 
-AVAILABLE_CUBES = {
-    "red": 12,
-    "green": 13,
-    "blue": 14
-}
+AVAILABLE_CUBES = {"red": 12, "green": 13, "blue": 14}
 
 
 games_doc = read_input(day_number=2)
@@ -23,7 +19,7 @@ for game_line in games_doc:
         cube_qty, cube_color = cube.split()
         if AVAILABLE_CUBES.get(cube_color, 0) < int(cube_qty):
             is_game_possible = False
-    
+
     if is_game_possible:
         # print(game_id)
         response += game_id

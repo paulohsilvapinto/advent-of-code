@@ -16,7 +16,7 @@ for game in games:
     for number in scratched_numbers:
         if number in winning_numbers:
             count_correct_numbers += 1
-    
-    response += (2 ** (count_correct_numbers - 1) if count_correct_numbers else 0)
+
+    response += 2 ** (count_correct_numbers - 1) if count_correct_numbers else 0
 
 print(response)

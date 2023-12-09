@@ -1,11 +1,21 @@
 from commons.utils import read_input
 from collections import namedtuple
 
+
 def check_is_engine_part(engine_schematic_matrix, number_start_position, number_end_position):
-    for row_search_idx in range(max(0, number_start_position.row - 1), min(len(engine_schematic_matrix), number_end_position.row + 2)):
-        for col_search_idx in range(max(0, number_start_position.column - 1), min(len(engine_schematic_matrix[0]), number_end_position.column + 2)):
+    for row_search_idx in range(
+        max(0, number_start_position.row - 1),
+        min(len(engine_schematic_matrix), number_end_position.row + 2),
+    ):
+        for col_search_idx in range(
+            max(0, number_start_position.column - 1),
+            min(len(engine_schematic_matrix[0]), number_end_position.column + 2),
+        ):
             schematic_char = engine_schematic_matrix[row_search_idx][col_search_idx]
-            if number_start_position.row == row_search_idx and number_start_position.column <= col_search_idx <= number_end_position.column:
+            if (
+                number_start_position.row == row_search_idx
+                and number_start_position.column <= col_search_idx <= number_end_position.column
+            ):
                 pass
             else:
                 if schematic_char not in [".", "\n"] and not schematic_char.isnumeric():
@@ -26,10 +36,10 @@ for row_idx, row_val in enumerate(engine_schematic_matrix):
         if col_val.isnumeric():
             if not number_builder:
                 start_position = MatrixPosition(row_idx, col_idx)
-            number_builder += col_val 
+            number_builder += col_val
         else:
             if number_builder:
-                end_position = MatrixPosition(row_idx, col_idx-1)
+                end_position = MatrixPosition(row_idx, col_idx - 1)
                 current_number = int(number_builder)
                 number_builder = ""
 
@@ -39,4 +49,3 @@ for row_idx, row_val in enumerate(engine_schematic_matrix):
                     response += current_number
 
 print(response)
-                

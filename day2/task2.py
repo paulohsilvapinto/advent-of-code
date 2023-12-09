@@ -13,6 +13,6 @@ for game_line in games_doc:
         cube_qty, cube_color = cube.split()
         min_cubes[cube_color] = max(min_cubes[cube_color], int(cube_qty))
 
-    response += (min_cubes["red"] * min_cubes["green"] * min_cubes["blue"])
+    response += min_cubes["red"] * min_cubes["green"] * min_cubes["blue"]
 
 print(response)
