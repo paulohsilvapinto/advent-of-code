@@ -1,5 +1,6 @@
-from commons.utils import read_input
 from collections import namedtuple
+
+from commons.utils import read_input
 
 
 def check_is_engine_part(engine_schematic_matrix, number_start_position, number_end_position):

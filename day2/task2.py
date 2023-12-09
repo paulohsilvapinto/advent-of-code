@@ -1,5 +1,6 @@
 import re
 from collections import defaultdict
+
 from commons.utils import read_input
 
 games_doc = read_input(day_number=2)

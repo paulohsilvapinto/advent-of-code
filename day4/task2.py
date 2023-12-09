@@ -1,6 +1,7 @@
-from commons.utils import read_input
-from collections import defaultdict
 import re
+from collections import defaultdict
+
+from commons.utils import read_input
 
 games = read_input(day_number=4)
 scratchcards_per_card = defaultdict(int)

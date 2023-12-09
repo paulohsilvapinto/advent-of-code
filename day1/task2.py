@@ -1,4 +1,5 @@
 import re
+
 from commons.utils import read_input
 
 NUMBER_MAPPING = {

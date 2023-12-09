@@ -1,9 +1,9 @@
-from commons.utils import read_input
+import re
 import sys
 
+from commons.utils import read_input
+
 print(sys.path)
-from commons.testa import hello
-import re
 
 games = read_input(day_number=4)
 response = 0

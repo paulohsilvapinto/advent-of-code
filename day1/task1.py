@@ -1,4 +1,5 @@
 import re
+
 from commons.utils import read_input
 
 calibration_doc = read_input(day_number=1)

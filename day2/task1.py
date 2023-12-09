@@ -1,5 +1,6 @@
-from commons.utils import read_input
 import re
+
+from commons.utils import read_input
 
 AVAILABLE_CUBES = {"red": 12, "green": 13, "blue": 14}
 

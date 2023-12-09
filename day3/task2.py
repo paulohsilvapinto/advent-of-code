@@ -1,5 +1,6 @@
-from commons.utils import read_input
 from collections import namedtuple
+
+from commons.utils import read_input
 
 response = 0
 number_builder = ""
@@ -47,7 +48,7 @@ for row_idx, row_val in enumerate(engine_schematic_matrix):
                     NumberAdjacencies(
                         current_number,
                         get_adjacent_points(engine_schematic_matrix, start_position, end_position),
-                    )
+                    ),
                 )
                 # print(current_number, end=", ")
 
