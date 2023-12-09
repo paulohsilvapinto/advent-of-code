@@ -1,3 +1,4 @@
+from commons.utils import read_input
 from collections import namedtuple
 
 response = 0
@@ -21,9 +22,7 @@ def get_adjacent_points(engine_schematic_matrix, start_position, end_position):
     return adjacent_positions
 
 
-with open("2023\\day3\\day3_input.txt", "r", encoding="utf-8") as f:
-    engine_schematic = f.readlines()
-
+engine_schematic = read_input(day_number=3)
 engine_schematic_matrix = [[char for char in row] for row in engine_schematic]
 
 for row_idx, row_val in enumerate(engine_schematic_matrix):

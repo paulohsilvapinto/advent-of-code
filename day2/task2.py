@@ -1,10 +1,8 @@
 import re
 from collections import defaultdict
+from commons.utils import read_input
 
-
-with open("2023\\day2\\day2_input.txt", "r", encoding="utf-8") as f:
-    games_doc = f.readlines()
-
+games_doc = read_input(day_number=2)
 cubes_distribution_regex = r"(\d+\s[a-z]+)+"
 response = 0
 

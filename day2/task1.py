@@ -1,3 +1,4 @@
+from commons.utils import read_input
 import re
 
 AVAILABLE_CUBES = {
@@ -7,8 +8,7 @@ AVAILABLE_CUBES = {
 }
 
 
-with open("2023\\day2\\day2_input.txt", "r", encoding="utf-8") as f:
-    games_doc = f.readlines()
+games_doc = read_input(day_number=2)
 
 game_id_regex = r"^game (\d+):"
 cubes_distribution_regex = r"(\d+\s[a-z]+)+"
@@ -25,7 +25,7 @@ for game_line in games_doc:
             is_game_possible = False
     
     if is_game_possible:
-        print(game_id)
+        # print(game_id)
         response += game_id
 
 print(response)

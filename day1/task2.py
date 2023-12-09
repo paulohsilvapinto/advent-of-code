@@ -1,4 +1,5 @@
 import re
+from commons.utils import read_input
 
 NUMBER_MAPPING = {
     "one": "1",
@@ -13,9 +14,7 @@ NUMBER_MAPPING = {
 }
 
 written_numbers_search_str = "|".join(NUMBER_MAPPING.keys())
-
-with open("2023\\day1\\day1_input.txt", "r", encoding="utf-8") as f:
-    calibration_doc = f.readlines()
+calibration_doc = read_input(day_number=1)
 
 calibration_total = 0
 for line in calibration_doc:
