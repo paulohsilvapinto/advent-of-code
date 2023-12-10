@@ -1,8 +1,14 @@
+import os
 import re
 
 
 def read_input(day_number):
-    with open(f"day{day_number}\\day{day_number}_input.txt", "r", encoding="utf-8") as f:
+    with open(os.path.join(f"day{day_number}", "input.txt"), "r", encoding="utf-8") as f:
+        return f.readlines()
+
+
+def read_test_input(day_number):
+    with open(os.path.join(f"day{day_number}", "input.txt"), "r", encoding="utf-8") as f:
         return f.readlines()
 
 
