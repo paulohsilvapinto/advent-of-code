@@ -11,7 +11,7 @@ def parse_seeds(almanac):
 def parse_translations(almanac):
     translator = {}
     for line in almanac[1:]:
-        if line == "\n":
+        if line == "":
             pass
         elif "map:" in line:
             line_split = line.split("-to-")

@@ -39,7 +39,8 @@ for row_idx, row_val in enumerate(engine_schematic_matrix):
             if not number_builder:
                 start_position = MatrixPosition(row_idx, col_idx)
             number_builder += col_val
-        else:
+
+        if not col_val.isnumeric() or col_idx == len(engine_schematic_matrix[row_idx]) - 1:
             if number_builder:
                 end_position = MatrixPosition(row_idx, col_idx - 1)
                 current_number = int(number_builder)

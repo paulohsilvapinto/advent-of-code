@@ -19,7 +19,7 @@ def check_is_engine_part(engine_schematic_matrix, number_start_position, number_
             ):
                 pass
             else:
-                if schematic_char not in [".", "\n"] and not schematic_char.isnumeric():
+                if schematic_char not in ["."] and not schematic_char.isnumeric():
                     # print(f"char {repr(schematic_char)} on {row_search_idx}, {col_search_idx}")
                     return True
     return False
@@ -38,7 +38,8 @@ for row_idx, row_val in enumerate(engine_schematic_matrix):
             if not number_builder:
                 start_position = MatrixPosition(row_idx, col_idx)
             number_builder += col_val
-        else:
+
+        if not col_val.isnumeric() or col_idx == len(engine_schematic_matrix[row_idx]) - 1:
             if number_builder:
                 end_position = MatrixPosition(row_idx, col_idx - 1)
                 current_number = int(number_builder)
