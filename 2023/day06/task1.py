@@ -12,16 +12,22 @@ def calculate_distance(time_holding, time_available):
     return time_holding * (time_available - time_holding)
 
 
-races = read_input(year=2023, day_number=6)
-races_times = extract_numbers(races[0])
-races_distances = extract_numbers(races[1])
-races = [Race(time, distance) for time, distance in zip(races_times, races_distances)]
+def solve(input_data):
+    races = input_data
+    races_times = extract_numbers(races[0])
+    races_distances = extract_numbers(races[1])
+    races = [Race(time, distance) for time, distance in zip(races_times, races_distances)]
 
-ways_to_beat = defaultdict(int)
-for race_id, race in enumerate(races):
-    # print(race)
-    for time_holding in range(0, race.time):
-        if calculate_distance(time_holding, time_available=race.time) > race.record_distance:
-            ways_to_beat[race_id] += 1
+    ways_to_beat = defaultdict(int)
+    for race_id, race in enumerate(races):
+        # print(race)
+        for time_holding in range(0, race.time):
+            if calculate_distance(time_holding, time_available=race.time) > race.record_distance:
+                ways_to_beat[race_id] += 1
 
-print(prod(ways_to_beat.values()))
+    return prod(ways_to_beat.values())
+
+
+if __name__ == "__main__":
+    input_data = read_input(year=2023, day_number=6)
+    print(solve(input_data))

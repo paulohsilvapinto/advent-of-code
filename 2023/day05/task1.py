@@ -66,7 +66,13 @@ def get_min_location(seeds, translator):
     return min_location
 
 
-almanac = read_input(year=2023, day_number=5)
-seeds = parse_seeds(almanac)
-translator = parse_translations(almanac)
-print(get_min_location(seeds, translator))
+def solve(input_data):
+    almanac = input_data
+    seeds = parse_seeds(almanac)
+    translator = parse_translations(almanac)
+    return get_min_location(seeds, translator)
+
+
+if __name__ == "__main__":
+    input_data = read_input(year=2023, day_number=5)
+    print(solve(input_data))

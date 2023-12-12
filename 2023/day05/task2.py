@@ -61,15 +61,20 @@ def get_seed_for_location(location, translator):
     return converted_value
 
 
-almanac = read_input(year=2023, day_number=5)
-seed_ranges = parse_seed_ranges(almanac)
-translator = parse_reversed_translations(almanac)
+def solve(input_data):
+    almanac = input_data
+    seed_ranges = parse_seed_ranges(almanac)
+    translator = parse_reversed_translations(almanac)
 
-location = 0
-while True:
-    potential_seed = get_seed_for_location(location, translator)
-    # print(f"Location {location}, potential seed {potential_seed}")
-    if any(potential_seed in seed_range for seed_range in seed_ranges):
-        print(location)
-        break
-    location += 1
+    location = 0
+    while True:
+        potential_seed = get_seed_for_location(location, translator)
+        # print(f"Location {location}, potential seed {potential_seed}")
+        if any(potential_seed in seed_range for seed_range in seed_ranges):
+            return location
+        location += 1
+
+
+if __name__ == "__main__":
+    input_data = read_input(year=2023, day_number=5)
+    print(solve(input_data))

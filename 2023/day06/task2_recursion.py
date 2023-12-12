@@ -48,11 +48,17 @@ def find_max_time_win(time_range, race_time, record_distance):
         return find_max_time_win(time_range[0:middle_idx], race_time, record_distance)
 
 
-races = read_input(year=2023, day_number=6)
-race_time = int("".join(extract_numbers(races[0], type=str)))
-race_distance = int("".join(extract_numbers(races[1], type=str)))
+def solve(input_data):
+    races = input_data
+    race_time = int("".join(extract_numbers(races[0], type=str)))
+    race_distance = int("".join(extract_numbers(races[1], type=str)))
 
-min_hold_to_win = find_min_time_win([i for i in range(0, race_time)], race_time, race_distance)
-max_hold_to_win = find_max_time_win([i for i in range(0, race_time)], race_time, race_distance)
+    min_hold_to_win = find_min_time_win([i for i in range(0, race_time)], race_time, race_distance)
+    max_hold_to_win = find_max_time_win([i for i in range(0, race_time)], race_time, race_distance)
 
-print(max_hold_to_win - min_hold_to_win + 1)
+    return max_hold_to_win - min_hold_to_win + 1
+
+
+if __name__ == "__main__":
+    input_data = read_input(year=2023, day_number=6)
+    print(solve(input_data))

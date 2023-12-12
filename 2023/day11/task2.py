@@ -18,7 +18,7 @@ def identify_expanded_universe_rows_cols(universe):
     return rows_to_expand, cols_to_expand
 
 
-def identify_galaxies():
+def identify_galaxies(universe):
     galaxies_positions = []
 
     for row_idx, row in enumerate(universe):
@@ -54,16 +54,20 @@ def calculate_distance(point_a, point_b):
     return x_distance + y_distance
 
 
-universe = [row for row in read_input(year=2023, day_number=11)]
-# print(universe)
-rows_to_expand, cols_to_expand = identify_expanded_universe_rows_cols(universe)
-# print(rows_to_expand, cols_to_expand)
+def solve(input_data):
+    universe = [row for row in input_data]
+    rows_to_expand, cols_to_expand = identify_expanded_universe_rows_cols(universe)
 
-galaxies_positions = identify_galaxies()
-# print(galaxies_positions)
-galaxies_positions = update_galaxies_positions(galaxies_positions, rows_to_expand, cols_to_expand)
-# print(galaxies_positions)
-galaxies_pairs = list(combinations(galaxies_positions, 2))
-distances = [calculate_distance(pair[0], pair[1]) for pair in galaxies_pairs]
-total_distance = sum(distances)
-print(total_distance)
+    galaxies_positions = identify_galaxies(universe)
+    galaxies_positions = update_galaxies_positions(galaxies_positions, rows_to_expand, cols_to_expand)
+
+    galaxies_pairs = list(combinations(galaxies_positions, 2))
+    distances = [calculate_distance(pair[0], pair[1]) for pair in galaxies_pairs]
+    total_distance = sum(distances)
+
+    return total_distance
+
+
+if __name__ == "__main__":
+    input_data = read_input(year=2023, day_number=11)
+    print(solve(input_data))

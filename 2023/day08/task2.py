@@ -3,40 +3,46 @@ from math import lcm
 
 from commons.utils import read_input
 
-nodes = {}
-data = read_input(year=2023, day_number=8)
 
-instructions = data[0]
-nodes_definition = data[2:]
+def solve(input_data):
+    nodes = {}
 
-for node in nodes_definition:
-    node_name, node_connections = node.split(" = ")
-    node_connections = re.findall(r"([A-z]+)", node_connections)
-    nodes[node_name] = node_connections
-# print(nodes)
+    instructions = input_data[0]
+    nodes_definition = input_data[2:]
 
-starting_locations = [node for node in nodes if node.endswith("A")]
+    for node in nodes_definition:
+        node_name, node_connections = node.split(" = ")
+        node_connections = re.findall(r"([A-z]+)", node_connections)
+        nodes[node_name] = node_connections
+    # print(nodes)
 
-steps_per_starting_location = []
-for starting_location in starting_locations:
-    steps = 0
-    current_location = starting_location
+    starting_locations = [node for node in nodes if node.endswith("A")]
 
-    while not current_location.endswith("Z"):
-        for instruction in instructions:
-            if current_location.endswith("Z"):
-                break
+    steps_per_starting_location = []
+    for starting_location in starting_locations:
+        steps = 0
+        current_location = starting_location
 
-            if instruction == "L":
-                current_location = nodes[current_location][0]
-            else:
-                current_location = nodes[current_location][1]
+        while not current_location.endswith("Z"):
+            for instruction in instructions:
+                if current_location.endswith("Z"):
+                    break
 
-            # print(f"{steps} - {current_locations}")
-            steps += 1
+                if instruction == "L":
+                    current_location = nodes[current_location][0]
+                else:
+                    current_location = nodes[current_location][1]
 
-    steps_per_starting_location.append(steps)
+                # print(f"{steps} - {current_locations}")
+                steps += 1
 
-steps_for_convergence = lcm(*steps_per_starting_location)  # Least Common Multiple
+        steps_per_starting_location.append(steps)
 
-print(steps_for_convergence)
+    steps_for_convergence = lcm(*steps_per_starting_location)  # Least Common Multiple
+
+    return steps_for_convergence
+
+
+if __name__ == "__main__":
+    input_data = read_input(year=2023, day_number=8)
+    print(solve(input_data))

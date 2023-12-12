@@ -1,8 +1,8 @@
 from commons.utils import read_input
 
 
-def get_maze():
-    return [[char for char in line] for line in read_input(year=2023, day_number=10)]
+def get_maze(input_data):
+    return [[char for char in line] for line in input_data]
 
 
 def find_starting_coordinate(maze):
@@ -50,7 +50,7 @@ def find_path_after_start(maze, starting_coordinate):
         return move_down(starting_coordinate)
 
 
-def get_next_position(current_direction, current_coordinate):
+def get_next_position(maze, current_direction, current_coordinate):
     pipe_movement_map = {
         "|": {
             "up": move_up,
@@ -78,22 +78,28 @@ def get_next_position(current_direction, current_coordinate):
         },
     }
 
+    current_pipe = maze[current_coordinate[0]][current_coordinate[1]]
+    # print(current_pipe)
     return pipe_movement_map[current_pipe][current_direction](current_coordinate)
 
 
-maze = get_maze()
-starting_coordinate = find_starting_coordinate(maze)
+def solve(input_data):
+    maze = get_maze(input_data)
+    starting_coordinate = find_starting_coordinate(maze)
 
-# print(maze)
-# print(starting_coordinate)
+    # print(maze)
+    # print(starting_coordinate)
 
-current_coordinate, current_direction = find_path_after_start(maze, starting_coordinate)
-steps = 1
-while current_coordinate != starting_coordinate:
-    current_pipe = maze[current_coordinate[0]][current_coordinate[1]]
-    # print(current_pipe)
-    current_coordinate, current_direction = get_next_position(current_direction, current_coordinate)
-    steps += 1
+    current_coordinate, current_direction = find_path_after_start(maze, starting_coordinate)
+    steps = 1
+    while current_coordinate != starting_coordinate:
+        current_coordinate, current_direction = get_next_position(maze, current_direction, current_coordinate)
+        steps += 1
 
-farthest_from_start = steps // 2 if steps % 2 == 0 else steps // 2 + 1
-print(farthest_from_start)
+    farthest_from_start = steps // 2 if steps % 2 == 0 else steps // 2 + 1
+    return farthest_from_start
+
+
+if __name__ == "__main__":
+    input_data = read_input(year=2023, day_number=10)
+    print(solve(input_data))

@@ -51,15 +51,21 @@ def classify_cards_strength(cards):
     return strength
 
 
-games = read_input(year=2023, day_number=7)
-games_list = []
-for game in games:
-    hand, bid = game.split()
-    hand = hand.upper()
-    hand_strength = classify_hand_strength(hand) + classify_cards_strength(hand)
-    games_list.append(Game(hand, int(bid), hand_strength))
+def solve(input_data):
+    games = input_data
+    games_list = []
+    for game in games:
+        hand, bid = game.split()
+        hand = hand.upper()
+        hand_strength = classify_hand_strength(hand) + classify_cards_strength(hand)
+        games_list.append(Game(hand, int(bid), hand_strength))
 
-ranked_games = sorted(games_list, key=lambda game: game.hand_strength, reverse=True)
+    ranked_games = sorted(games_list, key=lambda game: game.hand_strength, reverse=True)
 
-total_winnings = sum([(rank + 1) * game.bid for rank, game in enumerate(ranked_games)])
-print(total_winnings)
+    total_winnings = sum([(rank + 1) * game.bid for rank, game in enumerate(ranked_games)])
+    return total_winnings
+
+
+if __name__ == "__main__":
+    input_data = read_input(year=2023, day_number=7)
+    print(solve(input_data))

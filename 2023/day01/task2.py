@@ -13,14 +13,21 @@ NUMBER_MAPPING = {
     "eight": "8",
     "nine": "9",
 }
+WRITTEN_NUMBERS_SEARCH_STR = "|".join(NUMBER_MAPPING.keys())
 
-written_numbers_search_str = "|".join(NUMBER_MAPPING.keys())
-calibration_doc = read_input(year=2023, day_number=1)
 
-calibration_total = 0
-for line in calibration_doc:
-    digits = re.findall(rf"\d|{written_numbers_search_str}", line.lower())
-    calibration_number = NUMBER_MAPPING.get(digits[0], digits[0]) + NUMBER_MAPPING.get(digits[-1], digits[-1])
-    calibration_total += int(calibration_number)
+def solve(input_data):
+    calibration_doc = read_input(year=2023, day_number=1)
 
-print(calibration_total)
+    calibration_total = 0
+    for line in calibration_doc:
+        digits = re.findall(rf"\d|{WRITTEN_NUMBERS_SEARCH_STR}", line.lower())
+        calibration_number = NUMBER_MAPPING.get(digits[0], digits[0]) + NUMBER_MAPPING.get(digits[-1], digits[-1])
+        calibration_total += int(calibration_number)
+
+    return calibration_total
+
+
+if __name__ == "__main__":
+    input_data = read_input(year=2023, day_number=1)
+    print(solve(input_data))
