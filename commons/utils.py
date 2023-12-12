@@ -2,10 +2,10 @@ import os
 import re
 
 
-def read_input(day_number, test_input=False):
+def read_input(year, day_number, test_input=False):
     file_name = "test_input.txt" if test_input else "input.txt"
     day = str(day_number).zfill(2)
-    with open(os.path.join(f"day{day}", file_name), "r", encoding="utf-8") as f:
+    with open(os.path.join(f"{year}", f"day{day}", file_name), "r", encoding="utf-8") as f:
         return f.read().splitlines()
 
 
