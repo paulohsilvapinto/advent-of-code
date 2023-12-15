@@ -2,24 +2,8 @@ from collections import Counter
 
 from numpy import transpose
 
+from commons.utils import get_matrixes_from_input
 from commons.utils import read_input
-
-
-def parse_input(input_data):
-    pattern_matrixes = []
-
-    matrix_builder = []
-    for pattern_row in input_data:
-        if pattern_row:
-            matrix_builder.append([val for val in pattern_row])
-        else:
-            pattern_matrixes.append(matrix_builder)
-            matrix_builder = []
-
-    if matrix_builder:
-        pattern_matrixes.append(matrix_builder)
-
-    return pattern_matrixes
 
 
 def are_rows_mirroring(pattern, current_row_idx, row_length):
@@ -62,7 +46,7 @@ def calculate_answer(horizontal_reflex_indexes, vertical_reflex_indexes):
 
 
 def solve(input_data):
-    pattern_matrixes = parse_input(input_data)
+    pattern_matrixes = get_matrixes_from_input(input_data)
 
     horizontal_reflex_indexes = []
     vertical_reflex_indexes = []
