@@ -37,6 +37,10 @@ def get_matrix_from_input(input_data):
     return matrix
 
 
+def get_matrix_tuple_from_input(input_data):
+    return tuple([tuple([val for val in row]) for row in input_data])
+
+
 def ares_matrixes_equal(matrix_a, matrix_b):
     if len(matrix_a) != len(matrix_b) or len(matrix_a[0]) != len(matrix_b[0]):
         return False
